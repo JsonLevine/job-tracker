@@ -33,10 +33,15 @@
   }
 }
 
-.card {
-  padding: 2em;
+
+.jersey {
+  font-family: "Jersey 20", sans-serif;
 }
 
-.read-the-docs {
-  color: #888;
+.jersey-25 {
+  font-family: "Jersey 25", sans-serif;
+}
+
+.micro {
+  font-family: "Micro 5", sans-serif;
 }

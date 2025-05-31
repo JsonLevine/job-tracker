@@ -8,12 +8,12 @@ function Footer() {
         <a 
           data-testid="footer-link" 
           className="flex flex-col items-center justify-center transition duration-300 ease-in-out hover:text-stronghold-green hover:-translate-y-1" 
-          href="https://github.com/JsonLevine/jason-portfolio" 
+          href="https://github.com/JsonLevine/job-tracker" 
           target="_blank" 
           rel="noreferrer">
           <span>
             <span className="text-stronghold-red">2025</span> Designed and built by  
-            <span className="jersey text-stronghold-red pl-1">
+            <span className="jersey-25 text-xl text-stronghold-red pl-1">
               <strong>Jason Levine</strong><br/>
             </span>
           </span>
