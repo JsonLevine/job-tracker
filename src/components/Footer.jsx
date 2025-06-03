@@ -7,7 +7,7 @@ function Footer() {
       <div className="flex flex-row items-center justify-center text-center md:p-10 p-2">
         <a 
           data-testid="footer-link" 
-          className="flex flex-col items-center justify-center transition duration-300 ease-in-out hover:text-stronghold-green hover:-translate-y-1" 
+          className="flex flex-col items-center justify-center transition duration-300 ease-in-out hover:-translate-y-1 hover:text-stronghold-green " 
           href="https://github.com/JsonLevine/job-tracker" 
           target="_blank" 
           rel="noreferrer">

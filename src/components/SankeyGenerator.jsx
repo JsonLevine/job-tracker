@@ -111,7 +111,8 @@ function SankeyGenerator() {
         </label>
         : ''}
         <button
-          className="px-4 py-2 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark"
+          className="jersey text-xl px-4 py-2 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
+          transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
           onClick={(e) => {
             e.preventDefault();
             const textToCopy = document.querySelector('pre').innerText;
@@ -126,12 +127,12 @@ function SankeyGenerator() {
         </button>
       </form>
       <div className="mt-4 text-center">
-        <div className="mb-4">Once you have copied the above text, you can use it as an input in the </div>
+        <div className="">Once you have copied the above text, you can use it as an input in the </div>
         <a
           href="https://sankeymatic.com/build/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-stronghold-green ring-1 ring-stronghold-green rounded p-2 jersey hover:underline"
+          className="jersey text-stronghold-white text-2xl rounded jersey transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110 hover:underline"
         >
           SankeyMATIC tool
         </a>
