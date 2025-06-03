@@ -14,22 +14,84 @@ function SankeyGenerator() {
           value={data.applications || ''}
           onChange={(e) => setData({ ...data, applications: e.target.value })}
         />
+        <input
+          type="text"
+          placeholder="Enter number of rejections"
+          className="mb-4 w-full p-2 border rounded"
+          value={data.rejections || ''}
+          onChange={(e) => setData({ ...data, rejections: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Enter number of no answers"
+          className="mb-4 w-full p-2 border rounded"
+          value={data.noAnswers || ''}
+          onChange={(e) => setData({ ...data, noAnswers: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Enter number of 1st interviews"
+          className="mb-4 w-full p-2 border rounded"
+          value={data.firstInterviews || ''}
+          onChange={(e) => setData({ ...data, firstInterviews: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Enter number of 2nd interviews"
+          className="mb-4 w-full p-2 border rounded"
+          value={data.secondInterviews || ''}
+          onChange={(e) => setData({ ...data, secondInterviews: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Enter number of offers"
+          className="mb-4 w-full p-2 border rounded"
+          value={data.offers || ''}
+          onChange={(e) => setData({ ...data, offers: e.target.value })}
+        />
+        <input
+          type="text"
+          placeholder="Enter number of accepted offers"
+          className="mb-4 w-full p-2 border rounded"
+          value={data.accepted || ''}
+          onChange={(e) => setData({ ...data, accepted: e.target.value })}
+        />
         <label className="mb-2">
-          Data:
-          <textarea
-            className="w-full h-32 p-2 border rounded"
-            value={JSON.stringify(data, null, 2)}
-            onChange={(e) => setData(JSON.parse(e.target.value))}
-          />
+         .txt preview
+          <pre className="bg-gray-100 p-2 rounded text-left">
+            {`
+Applications [${data.applications || 0}] 1st Interviews
+Applications [${data.rejections || 0}] Rejected
+Applications [${data.noAnswers || 0}] No Answer
+
+1st Interviews [${data.firstInterviews || 0}] 2nd Interviews
+1st Interviews [${data.firstInterviews || 0}] No Offer
+2nd Interviews [${data.secondInterviews || 0}] Offers
+
+Offers [${data.offers || 0}] Accepted
+Offers [${data.offers || 0}] Declined
+            `}
+          </pre>
+
         </label>
         <button
           type="submit"
           className="px-4 py-2 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark"
         >
-          Generate Sankey Diagram
+          Generate Sankey .txt File
         </button>
       </form>
-      <div></div>
+      <div className="mt-4 text-center">
+        <div className="mb-4">Once you download the Sankey .txt file, you can use it as an input in the </div>
+        <a
+          href="https://sankeymatic.com/build/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-stronghold-green ring-1 ring-stronghold-green rounded p-2 jersey hover:underline"
+        >
+          SankeyMATIC tool
+        </a>
+      </div>
     </div>
   )
 }
