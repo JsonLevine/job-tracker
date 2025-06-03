@@ -8,57 +8,58 @@ function SankeyGenerator() {
       <h2>Sankey Generator</h2>
       <form className="flex flex-col items-center justify-center w-full">
         <input
-          type="text"
+          type="number"
           placeholder="Enter number of applications"
           className="mb-4 w-full p-2 border rounded"
           value={data.applications || ''}
           onChange={(e) => setData({ ...data, applications: e.target.value })}
         />
         <input
-          type="text"
+          type="number"
           placeholder="Enter number of rejections"
           className="mb-4 w-full p-2 border rounded"
           value={data.rejections || ''}
           onChange={(e) => setData({ ...data, rejections: e.target.value })}
         />
         <input
-          type="text"
+          type="number"
           placeholder="Enter number of no answers"
           className="mb-4 w-full p-2 border rounded"
           value={data.noAnswers || ''}
           onChange={(e) => setData({ ...data, noAnswers: e.target.value })}
         />
         <input
-          type="text"
+          type="number"
           placeholder="Enter number of 1st interviews"
           className="mb-4 w-full p-2 border rounded"
           value={data.firstInterviews || ''}
           onChange={(e) => setData({ ...data, firstInterviews: e.target.value })}
         />
         <input
-          type="text"
+          type="number"
           placeholder="Enter number of 2nd interviews"
           className="mb-4 w-full p-2 border rounded"
           value={data.secondInterviews || ''}
           onChange={(e) => setData({ ...data, secondInterviews: e.target.value })}
         />
         <input
-          type="text"
+          type="number"
           placeholder="Enter number of offers"
           className="mb-4 w-full p-2 border rounded"
           value={data.offers || ''}
           onChange={(e) => setData({ ...data, offers: e.target.value })}
         />
         <input
-          type="text"
+          type="number"
           placeholder="Enter number of accepted offers"
           className="mb-4 w-full p-2 border rounded"
           value={data.accepted || ''}
           onChange={(e) => setData({ ...data, accepted: e.target.value })}
         />
-        <label className="mb-2">
+        <label className=" text-xl mb-2">
          .txt preview
           <pre className="bg-gray-100 p-2 rounded text-left">
+            {/* Only show lines for non-zero values */}
             {`
 Applications [${data.applications || 0}] 1st Interviews
 Applications [${data.rejections || 0}] Rejected
