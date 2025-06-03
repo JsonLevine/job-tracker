@@ -56,25 +56,25 @@ function SankeyGenerator() {
           value={data.accepted || ''}
           onChange={(e) => setData({ ...data, accepted: e.target.value })}
         />
-        <label className=" text-xl mb-2">
+        {data.applications ? 
+        <label className="text-xl mb-2">
          .txt preview
           <pre className="bg-gray-100 p-2 rounded text-left">
             {/* Only show lines for non-zero values */}
-            {`
-Applications [${data.applications || 0}] 1st Interviews
-Applications [${data.rejections || 0}] Rejected
-Applications [${data.noAnswers || 0}] No Answer
-
-1st Interviews [${data.firstInterviews || 0}] 2nd Interviews
-1st Interviews [${data.firstInterviews || 0}] No Offer
-2nd Interviews [${data.secondInterviews || 0}] Offers
-
-Offers [${data.offers || 0}] Accepted
-Offers [${data.offers || 0}] Declined
-            `}
-          </pre>
-
+            {data.applications ? `Applications [${data.applications}] 1st Interviews` : ''}
+            {data.rejections ? `\nApplications [${data.rejections}] Rejected` : ''}
+            {data.noAnswers ? `\nApplications [${data.noAnswers}] No Answer` : ''}
+            {`\n`}
+            {data.firstInterviews ? `\n1st Interviews [${data.secondInterviews}] 2nd Interviews` : ''}
+            {data.firstInterviews ? `\n1st Interviews [${data.firstInterviews - data.secondInterviews}] No Offer` : ''}
+            {`\n`}
+            {data.secondInterviews ? `\n2nd Interviews [${data.secondInterviews}] Offers` : ''}
+            {`\n`}
+            {data.offers ? `\nOffers [${data.accepted}] Accepted` : ''}
+            {data.offers ? `\nOffers [${data.offers - data.accepted}] Declined` : ''}
+          </pre> 
         </label>
+        : ''}
         <button
           type="submit"
           className="px-4 py-2 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark"
