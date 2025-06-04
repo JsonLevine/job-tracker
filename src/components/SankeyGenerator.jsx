@@ -7,18 +7,21 @@ function SankeyGenerator() {
     <div className="flex-1 ring-2 rounded ring-stronghold-red text-stronghold-red jersey flex flex-col items-center justify-start p-4 mt-8">
       <h2>Sankey Generator</h2>
       <form className="flex flex-col items-center justify-center w-full">
-        
+        <label className="text-xl mb-2">
+          Enter your job search data below to generate a Sankey diagram:
+        </label>
         <input
           type="number"
           placeholder="Enter number of applications"
-          className="mb-4 w-full p-2 border rounded"
+          className="mb-4 w-full p-2 border rounded bg-stronghold-onyx text-stronghold-white"
           value={data.applications || ''}
           onChange={(e) => {
             const value = parseInt(e.target.value, 10);
             if (value > 0) {
               setData({ ...data, applications: value });
             }
-          }}        />
+          }}
+        />
         <input
           type="number"
           placeholder="Enter number of rejections"
