@@ -79,6 +79,28 @@ function SankeyGenerator() {
             }
           }}  
         />
+        <div className="w-full flex flex-row justify-start">
+          <label className="text-stronghold-platinum mb-2">
+            Of those <strong className="text-stronghold-red">{data.secondInterviews}</strong> interviews, how many advanced to a third (or more)?
+          </label>
+        </div>
+        <input
+          type="number"
+          placeholder="Enter number of 3rd+ round interviews"
+          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+          value={data.threePlusInterviews || ''}
+          onChange={(e) => {
+            const value = parseInt(e.target.value, 10);
+            if (value > 0) {
+              setData({ ...data, threePlusInterviews: value });
+            }
+          }}  
+        />
+        <div className="w-full flex flex-row justify-start">
+          <label className="text-stronghold-platinum mb-2">
+            How many offers did you receive from those interviews?
+          </label>
+        </div>
         <input
           type="number"
           placeholder="Enter number of offers"
@@ -91,6 +113,11 @@ function SankeyGenerator() {
             }
           }}  
         />
+        <div className="w-full flex flex-row justify-start">
+          <label className="text-stronghold-platinum mb-2">
+            How many offers did you accept?
+          </label>
+        </div>
         <input
           type="number"
           placeholder="Enter number of accepted offers"
@@ -110,19 +137,19 @@ function SankeyGenerator() {
             {/* Only show lines for non-zero values */}
             {data.firstInterviews ? `Applications [${data.firstInterviews}] 1st Interviews` : ''}
             {data.rejections ? `\nApplications [${data.rejections}] Rejected` : ''}
-            {(data.rejections && data.firstInterviews) ? `\nApplications [${data.applications - data.rejections - data.firstInterviews}] No Answer` : ''}
+            {(data.applications - data.rejections - data.firstInterviews) > 0 ? `\nApplications [${data.applications - data.rejections - data.firstInterviews}] No Answer` : ''}
             {`\n`}
             {data.firstInterviews ? `\n1st Interviews [${data.secondInterviews}] 2nd Interviews` : ''}
             {data.firstInterviews ? `\n1st Interviews [${data.firstInterviews - data.secondInterviews}] No Offer` : ''}
             {`\n`}
             {data.secondInterviews ? `\n2nd Interviews [${data.threePlusInterviews}] 3+ Interviews` : ''}
-            {data.secondInterviews ? `\n2nd Interviews [${data.secondInterviews - data.threePlusInterviews}] No Offer` : ''}
+            {(data.secondInterviews - data.threePlusInterviews) > 0 ? `\n2nd Interviews [${data.secondInterviews - data.threePlusInterviews}] No Offer` : ''}
             {`\n`}
             {data.threePlusInterviews ? `\n3+ Interviews [${data.offers}] Offers` : ''}
             {data.threePlusInterviews ? `\n3+ Interviews [${data.threePlusInterviews - data.offers}] No Offer` : ''}
             {`\n`}
             {data.offers ? `\nOffers [${data.accepted}] Accepted` : ''}
-            {data.offers ? `\nOffers [${data.offers - data.accepted}] Declined` : ''}
+            {(data.offers - data.accepted) > 0 ? `\nOffers [${data.offers - data.accepted}] Declined` : ''}
           </pre> 
         </label>
         : ''}
