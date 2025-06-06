@@ -10,10 +10,16 @@ function SankeyGenerator() {
         <label className="text-xl mb-2">
           Enter your job search data below to generate a Sankey diagram:
         </label>
+        <div className="w-full flex flex-row justify-start">
+          <label className="text-stronghold-platinum mb-2">
+            How many applications did you submit?
+            <span className="text-stronghold-red/60"> (must be greater than 0)</span>
+          </label>
+        </div>
         <input
           type="number"
           placeholder="Enter number of applications"
-          className="mb-4 w-full p-2 border rounded bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
           value={data.applications || ''}
           onChange={(e) => {
             const value = parseInt(e.target.value, 10);
@@ -22,10 +28,15 @@ function SankeyGenerator() {
             }
           }}
         />
+        <div className="w-full flex flex-row justify-start">
+          <label className="text-stronghold-platinum mb-2">
+            Of those <strong className="text-stronghold-red">{data.applications}</strong> applications, how many were rejected?
+          </label>
+        </div>
         <input
           type="number"
           placeholder="Enter number of rejections"
-          className="mb-4 w-full p-2 border rounded"
+          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
           value={data.rejections || ''}
           onChange={(e) => {
             const value = parseInt(e.target.value, 10);
@@ -34,22 +45,15 @@ function SankeyGenerator() {
             }
           }}  
         />
-        <input
-          type="number"
-          placeholder="Enter number of no answers"
-          className="mb-4 w-full p-2 border rounded"
-          value={data.noAnswers || ''}
-          onChange={(e) => {
-            const value = parseInt(e.target.value, 10);
-            if (value > 0) {
-              setData({ ...data, noAnswers: value });
-            }
-          }}  
-        />
+         <div className="w-full flex flex-row justify-start">
+          <label className="text-stronghold-platinum mb-2">
+            How many led to a 1st interview?
+          </label>
+        </div>
         <input
           type="number"
           placeholder="Enter number of 1st interviews"
-          className="mb-4 w-full p-2 border rounded"
+          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
           value={data.firstInterviews || ''}
           onChange={(e) => {
             const value = parseInt(e.target.value, 10);
@@ -58,10 +62,15 @@ function SankeyGenerator() {
             }
           }}  
         />
+        <div className="w-full flex flex-row justify-start">
+          <label className="text-stronghold-platinum mb-2">
+            Of those <strong className="text-stronghold-red">{data.firstInterviews}</strong> interviews, how many advanced to a 2nd interview?
+          </label>
+        </div>
         <input
           type="number"
           placeholder="Enter number of 2nd interviews"
-          className="mb-4 w-full p-2 border rounded"
+          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
           value={data.secondInterviews || ''}
           onChange={(e) => {
             const value = parseInt(e.target.value, 10);
@@ -73,7 +82,7 @@ function SankeyGenerator() {
         <input
           type="number"
           placeholder="Enter number of offers"
-          className="mb-4 w-full p-2 border rounded"
+          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
           value={data.offers || ''}
           onChange={(e) => {
             const value = parseInt(e.target.value, 10);
@@ -85,7 +94,7 @@ function SankeyGenerator() {
         <input
           type="number"
           placeholder="Enter number of accepted offers"
-          className="mb-4 w-full p-2 border rounded"
+          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
           value={data.accepted || ''}
           onChange={(e) => {
             const value = parseInt(e.target.value, 10);
@@ -99,14 +108,18 @@ function SankeyGenerator() {
          .txt preview
           <pre className="bg-gray-100 p-2 rounded text-left">
             {/* Only show lines for non-zero values */}
-            {data.applications ? `Applications [${data.applications}] 1st Interviews` : ''}
+            {data.firstInterviews ? `Applications [${data.firstInterviews}] 1st Interviews` : ''}
             {data.rejections ? `\nApplications [${data.rejections}] Rejected` : ''}
-            {data.noAnswers ? `\nApplications [${data.noAnswers}] No Answer` : ''}
+            {(data.rejections && data.firstInterviews) ? `\nApplications [${data.applications - data.rejections - data.firstInterviews}] No Answer` : ''}
             {`\n`}
             {data.firstInterviews ? `\n1st Interviews [${data.secondInterviews}] 2nd Interviews` : ''}
             {data.firstInterviews ? `\n1st Interviews [${data.firstInterviews - data.secondInterviews}] No Offer` : ''}
             {`\n`}
-            {data.secondInterviews ? `\n2nd Interviews [${data.secondInterviews}] Offers` : ''}
+            {data.secondInterviews ? `\n2nd Interviews [${data.threePlusInterviews}] 3+ Interviews` : ''}
+            {data.secondInterviews ? `\n2nd Interviews [${data.secondInterviews - data.threePlusInterviews}] No Offer` : ''}
+            {`\n`}
+            {data.threePlusInterviews ? `\n3+ Interviews [${data.offers}] Offers` : ''}
+            {data.threePlusInterviews ? `\n3+ Interviews [${data.threePlusInterviews - data.offers}] No Offer` : ''}
             {`\n`}
             {data.offers ? `\nOffers [${data.accepted}] Accepted` : ''}
             {data.offers ? `\nOffers [${data.offers - data.accepted}] Declined` : ''}
@@ -148,14 +161,18 @@ export default SankeyGenerator
 
 // Sample Job Search diagram:
 
-// Applications [4] 1st Interviews
+// Applications [10] 1st Interviews
 // Applications [9] Rejected
-// Applications [4] No Answer
+// Applications [4] Ignored
 
-// 1st Interviews [2] 2nd Interviews
+// 1st Interviews [8] 2nd Interviews
 // 1st Interviews [2] No Offer
 
-// 2nd Interviews [2] Offers
+// 2nd Interviews [6] 3+ Interviews
+// 2nd Interviews [2] No Offer
+
+// 3+ Interviews [2] Offers
+// 3+ Interviews [4] No Offer
 
 // Offers [1] Accepted
 // Offers [1] Declined
