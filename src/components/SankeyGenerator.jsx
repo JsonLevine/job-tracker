@@ -13,7 +13,7 @@ function SankeyGenerator() {
         <input
           type="number"
           placeholder="Enter number of applications"
-          className="mb-4 w-full p-2 border rounded bg-stronghold-onyx text-stronghold-red focus:outline-2 focus:ring-2 focus:ring-stronghold-red"
+          className="mb-4 w-full p-2 border rounded bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
           value={data.applications || ''}
           onChange={(e) => {
             const value = parseInt(e.target.value, 10);
