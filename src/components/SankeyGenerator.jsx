@@ -10,6 +10,7 @@ function SankeyGenerator() {
         <label className="text-xl mb-2">
           Enter your job search data below to generate a Sankey diagram:
         </label>
+        
         <div className="w-full flex flex-row justify-start">
           <label className="text-stronghold-platinum mb-2">
             How many applications did you submit?
@@ -28,108 +29,138 @@ function SankeyGenerator() {
             }
           }}
         />
-        <div className="w-full flex flex-row justify-start">
-          <label className="text-stronghold-platinum mb-2">
-            Of those <strong className="text-stronghold-red">{data.applications}</strong> applications, how many were rejected?
-          </label>
-        </div>
-        <input
-          type="number"
-          placeholder="Enter number of rejections"
-          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-          value={data.rejections || ''}
-          onChange={(e) => {
-            const value = parseInt(e.target.value, 10);
-            if (value > 0) {
-              setData({ ...data, rejections: value });
-            }
-          }}  
-        />
-         <div className="w-full flex flex-row justify-start">
-          <label className="text-stronghold-platinum mb-2">
-            How many led to a 1st interview?
-          </label>
-        </div>
-        <input
-          type="number"
-          placeholder="Enter number of 1st interviews"
-          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-          value={data.firstInterviews || ''}
-          onChange={(e) => {
-            const value = parseInt(e.target.value, 10);
-            if (value > 0) {
-              setData({ ...data, firstInterviews: value });
-            }
-          }}  
-        />
-        <div className="w-full flex flex-row justify-start">
-          <label className="text-stronghold-platinum mb-2">
-            Of those <strong className="text-stronghold-red">{data.firstInterviews}</strong> interviews, how many advanced to a 2nd interview?
-          </label>
-        </div>
-        <input
-          type="number"
-          placeholder="Enter number of 2nd interviews"
-          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-          value={data.secondInterviews || ''}
-          onChange={(e) => {
-            const value = parseInt(e.target.value, 10);
-            if (value > 0) {
-              setData({ ...data, secondInterviews: value });
-            }
-          }}  
-        />
-        <div className="w-full flex flex-row justify-start">
-          <label className="text-stronghold-platinum mb-2">
-            Of those <strong className="text-stronghold-red">{data.secondInterviews}</strong> interviews, how many advanced to a third (or more)?
-          </label>
-        </div>
-        <input
-          type="number"
-          placeholder="Enter number of 3rd+ round interviews"
-          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-          value={data.threePlusInterviews || ''}
-          onChange={(e) => {
-            const value = parseInt(e.target.value, 10);
-            if (value > 0) {
-              setData({ ...data, threePlusInterviews: value });
-            }
-          }}  
-        />
-        <div className="w-full flex flex-row justify-start">
-          <label className="text-stronghold-platinum mb-2">
-            How many offers did you receive from those interviews?
-          </label>
-        </div>
-        <input
-          type="number"
-          placeholder="Enter number of offers"
-          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-          value={data.offers || ''}
-          onChange={(e) => {
-            const value = parseInt(e.target.value, 10);
-            if (value > 0) {
-              setData({ ...data, offers: value });
-            }
-          }}  
-        />
-        <div className="w-full flex flex-row justify-start">
-          <label className="text-stronghold-platinum mb-2">
-            How many offers did you accept?
-          </label>
-        </div>
-        <input
-          type="number"
-          placeholder="Enter number of accepted offers"
-          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-          value={data.accepted || ''}
-          onChange={(e) => {
-            const value = parseInt(e.target.value, 10);
-            if (value > 0) {
-              setData({ ...data, accepted: value });
-            }
-          }}
-        />
+      {data.applications &&
+        <>
+          <div className="w-full flex flex-row justify-start">
+            <label className="text-stronghold-platinum mb-2">
+              Of those <strong className="text-stronghold-red">{data.applications}</strong> applications, how many were rejected?
+            </label>
+          </div>
+          <input
+            type="number"
+            placeholder="Enter number of rejections"
+            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+            value={data.rejections || ''}
+            onChange={(e) => {
+              const value = parseInt(e.target.value, 10);
+              if (value > 0) {
+                setData({ ...data, rejections: value });
+              }
+            }}  
+          />
+        </>
+      } 
+
+      {data.applications &&
+        <>
+          <div className="w-full flex flex-row justify-start">
+            <label className="text-stronghold-platinum mb-2">
+              How many led to a 1st interview?
+            </label>
+          </div>
+          <input
+            type="number"
+            placeholder="Enter number of 1st interviews"
+            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+            value={data.firstInterviews || ''}
+            onChange={(e) => {
+              const value = parseInt(e.target.value, 10);
+              if (value > 0) {
+                setData({ ...data, firstInterviews: value });
+              }
+            }}  
+          />
+        </>
+      }
+
+      {data.firstInterviews &&
+        <>
+          <div className="w-full flex flex-row justify-start">
+            <label className="text-stronghold-platinum mb-2">
+              Of those <strong className="text-stronghold-red">{data.firstInterviews}</strong> interviews, how many advanced to a 2nd interview?
+            </label>
+          </div>
+          <input
+            type="number"
+            placeholder="Enter number of 2nd interviews"
+            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+            value={data.secondInterviews || ''}
+            onChange={(e) => {
+              const value = parseInt(e.target.value, 10);
+              if (value > 0) {
+                setData({ ...data, secondInterviews: value });
+              }
+            }}  
+          />
+        </>
+      }
+
+      {data.secondInterviews &&
+        <>
+          <div className="w-full flex flex-row justify-start">
+            <label className="text-stronghold-platinum mb-2">
+              Of those <strong className="text-stronghold-red">{data.secondInterviews}</strong> interviews, how many advanced to a 3rd (or more)?
+            </label>
+          </div>
+          <input
+            type="number"
+            placeholder="Enter number of 3rd+ round interviews"
+            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+            value={data.threePlusInterviews || ''}
+            onChange={(e) => {
+              const value = parseInt(e.target.value, 10);
+              if (value > 0) {
+                setData({ ...data, threePlusInterviews: value });
+              }
+            }}  
+          />
+        </>
+      }
+
+      {data.threePlusInterviews &&
+        <>
+          <div className="w-full flex flex-row justify-start">
+            <label className="text-stronghold-platinum mb-2">
+              How many offers did you receive from those interviews?
+            </label>
+          </div>
+          <input
+            type="number"
+            placeholder="Enter number of offers"
+            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+            value={data.offers || ''}
+            onChange={(e) => {
+              const value = parseInt(e.target.value, 10);
+              if (value > 0) {
+                setData({ ...data, offers: value });
+              }
+            }}  
+          />
+        </>
+      }
+      
+      {data.threePlusInterviews &&
+        <>
+          <div className="w-full flex flex-row justify-start">
+            <label className="text-stronghold-platinum mb-2">
+              How many offers did you accept?
+            </label>
+          </div>
+          <input
+            type="number"
+            placeholder="Enter number of accepted offers"
+            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+            value={data.accepted || ''}
+            onChange={(e) => {
+              const value = parseInt(e.target.value, 10);
+              if (value > 0) {
+                setData({ ...data, accepted: value });
+              }
+            }}
+          />
+        </>
+      }
+        
         {data.applications ? 
         <label className="text-xl mb-2">
          .txt preview
