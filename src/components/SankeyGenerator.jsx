@@ -49,7 +49,7 @@ function SankeyGenerator() {
         </label>
 
         <div className="w-full flex flex-row justify-start">
-          <label className="text-stronghold-platinum mb-2">
+          <label className="text-xl text-stronghold-platinum mb-2">
             How many applications did you submit?
             <span className="text-stronghold-red/60"> (must be greater than 0)</span>
           </label>
@@ -65,8 +65,8 @@ function SankeyGenerator() {
           />
           <button
             type="button"
-            className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
-            transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+            className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-white
+            transition duration-300 ease-in-out hover:text-stronghold-red"
             onClick={() => {
               if (tempFormData.applications && parseInt(tempFormData.applications, 10) > 0) {
                 setFormData({
@@ -85,8 +85,8 @@ function SankeyGenerator() {
         {formData.applications && (
           <>
             <div className="w-full flex flex-row justify-start">
-              <label className="text-stronghold-platinum mb-2">
-                Of those <strong className="text-stronghold-red">{formData.applications}</strong> applications, how many were rejected?
+              <label className="text-xl text-stronghold-platinum mb-2">
+                Of those <strong className="text-stronghold-red">{formData.applications}</strong> applications, how many were explicitely rejected?
               </label>
             </div>
             <div className="w-full flex flex-row justify-start items-center"> 
@@ -106,7 +106,7 @@ function SankeyGenerator() {
         {formData.applications && (
           <>
             <div className="w-full flex flex-row justify-start">
-              <label className="text-stronghold-platinum mb-2">
+              <label className="text-xl text-stronghold-platinum mb-2">
                 How many led to a 1st interview?
               </label>
             </div>
@@ -122,8 +122,8 @@ function SankeyGenerator() {
               />
               <button
                 type="button"
-                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
-                transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-white
+                transition duration-300 ease-in-out hover:text-stronghold-red"
                 onClick={() => {
                   if ((tempFormData.firstInterviews && parseInt(tempFormData.firstInterviews, 10) > 0)
                   && (tempFormData.rejections && parseInt(tempFormData.rejections, 10) > 0)) {
@@ -150,7 +150,7 @@ function SankeyGenerator() {
         {formData.firstInterviews && (
           <>
             <div className="w-full flex flex-row justify-start">
-              <label className="text-stronghold-platinum mb-2">
+              <label className="text-xl text-stronghold-platinum mb-2">
                 Of those <strong className="text-stronghold-red">{formData.firstInterviews}</strong> interviews, how many advanced to a 2nd interview?
               </label>
             </div>
@@ -166,8 +166,8 @@ function SankeyGenerator() {
               />
               <button
                 type="button"
-                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
-                transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-white
+                transition duration-300 ease-in-out hover:text-stronghold-red"
                 onClick={() => {
                   if (tempFormData.secondInterviews && parseInt(tempFormData.secondInterviews, 10) > 0) {
                     if (parseInt(tempFormData.secondInterviews, 10) > parseInt(tempFormData.firstInterviews, 10)) {
@@ -192,7 +192,7 @@ function SankeyGenerator() {
         {formData.secondInterviews && (
           <>
             <div className="w-full flex flex-row justify-start">
-              <label className="text-stronghold-platinum mb-2">
+              <label className="text-xl text-stronghold-platinum mb-2">
                 Of those <strong className="text-stronghold-red">{formData.secondInterviews}</strong> interviews, how many advanced to a 3rd (or more)?
               </label>
             </div>
@@ -208,8 +208,8 @@ function SankeyGenerator() {
               />
               <button
                 type="button"
-                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
-                transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-white
+                transition duration-300 ease-in-out hover:text-stronghold-red"
                 onClick={() => {
                   if (tempFormData.threePlusInterviews && parseInt(tempFormData.threePlusInterviews, 10) > 0) {
                     if (parseInt(tempFormData.threePlusInterviews, 10) > parseInt(tempFormData.secondInterviews, 10)) {
@@ -234,7 +234,7 @@ function SankeyGenerator() {
         {formData.threePlusInterviews && (
           <>
             <div className="w-full flex flex-row justify-start">
-              <label className="text-stronghold-platinum mb-2">
+              <label className="text-xl text-stronghold-platinum mb-2">
                 How many offers did you receive from those interviews?
               </label>
             </div>
@@ -250,8 +250,8 @@ function SankeyGenerator() {
               />
               <button
                 type="button"
-                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
-                transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-white
+                transition duration-300 ease-in-out hover:text-stronghold-red"
                 onClick={() => {
                   if (tempFormData.offers && parseInt(tempFormData.offers, 10) > 0) {
                     if (parseInt(tempFormData.offers, 10) > parseInt(tempFormData.threePlusInterviews, 10)) {
@@ -273,10 +273,10 @@ function SankeyGenerator() {
           </>
         )}
 
-        {formData.threePlusInterviews && (
+        {formData.offers && (
           <>
             <div className="w-full flex flex-row justify-start">
-              <label className="text-stronghold-platinum mb-2">
+              <label className="text-xl text-stronghold-platinum mb-2">
                 Of those <strong className="text-stronghold-red">{formData.offers}</strong> offers, how many did you accept?
               </label>
             </div>
@@ -292,8 +292,8 @@ function SankeyGenerator() {
               />
               <button
                 type="button"
-                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
-                transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-white
+                transition duration-300 ease-in-out hover:text-stronghold-red"
                 onClick={() => {
                   if (tempFormData.accepted && parseInt(tempFormData.accepted, 10) > 0) {
                     if (parseInt(tempFormData.accepted, 10) > parseInt(tempFormData.offers, 10)) {
