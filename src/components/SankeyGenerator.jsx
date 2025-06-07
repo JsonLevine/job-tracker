@@ -3,14 +3,41 @@ import { useState } from 'react'
 function SankeyGenerator() {
   const [data, setData] = useState({})
 
+  const [formData, setFormData] = useState({
+    applications: '',
+    rejections: '',
+    firstInterviews: '',
+    secondInterviews: '',
+    threePlusInterviews: '',
+    offers: '',
+    accepted: '',
+  });
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const parsedData = {
+      applications: parseInt(formData.applications, 10) || 0,
+      rejections: parseInt(formData.rejections, 10) || 0,
+      firstInterviews: parseInt(formData.firstInterviews, 10) || 0,
+      secondInterviews: parseInt(formData.secondInterviews, 10) || 0,
+      threePlusInterviews: parseInt(formData.threePlusInterviews, 10) || 0,
+      offers: parseInt(formData.offers, 10) || 0,
+      accepted: parseInt(formData.accepted, 10) || 0,
+    };
+    setData(parsedData);
+  };
+
   return (
     <div className="flex-1 ring-2 rounded ring-stronghold-red text-stronghold-red jersey flex flex-col items-center justify-start p-4 mt-8">
       <h2>Sankey Generator</h2>
-      <form className="flex flex-col items-center justify-center w-full">
+      <form
+        className="flex flex-col items-center justify-center w-full"
+        onSubmit={handleSubmit}
+      >
         <label className="text-xl mb-2">
           Enter your job search data below to generate a Sankey diagram:
         </label>
-        
+
         <div className="w-full flex flex-row justify-start">
           <label className="text-stronghold-platinum mb-2">
             How many applications did you submit?
@@ -21,151 +48,138 @@ function SankeyGenerator() {
           type="number"
           placeholder="Enter number of applications"
           className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-          value={data.applications || ''}
-          onChange={(e) => {
-            const value = parseInt(e.target.value, 10);
-            if (value > 0) {
-              setData({ ...data, applications: value });
-            }
-          }}
+          value={formData.applications}
+          onChange={(e) =>
+            setFormData({ ...formData, applications: e.target.value })
+          }
         />
-      {data.applications &&
-        <>
-          <div className="w-full flex flex-row justify-start">
-            <label className="text-stronghold-platinum mb-2">
-              Of those <strong className="text-stronghold-red">{data.applications}</strong> applications, how many were rejected?
-            </label>
-          </div>
-          <input
-            type="number"
-            placeholder="Enter number of rejections"
-            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-            value={data.rejections || ''}
-            onChange={(e) => {
-              const value = parseInt(e.target.value, 10);
-              if (value > 0) {
-                setData({ ...data, rejections: value });
-              }
-            }}  
-          />
-        </>
-      } 
 
-      {data.applications &&
-        <>
-          <div className="w-full flex flex-row justify-start">
-            <label className="text-stronghold-platinum mb-2">
-              How many led to a 1st interview?
-            </label>
-          </div>
-          <input
-            type="number"
-            placeholder="Enter number of 1st interviews"
-            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-            value={data.firstInterviews || ''}
-            onChange={(e) => {
-              const value = parseInt(e.target.value, 10);
-              if (value > 0) {
-                setData({ ...data, firstInterviews: value });
+        {formData.applications && (
+          <>
+            <div className="w-full flex flex-row justify-start">
+              <label className="text-stronghold-platinum mb-2">
+                Of those <strong className="text-stronghold-red">{formData.applications}</strong> applications, how many were rejected?
+              </label>
+            </div>
+            <input
+              type="number"
+              placeholder="Enter number of rejections"
+              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              value={formData.rejections}
+              onChange={(e) =>
+                setFormData({ ...formData, rejections: e.target.value })
               }
-            }}  
-          />
-        </>
-      }
+            />
+          </>
+        )}
 
-      {data.firstInterviews &&
-        <>
-          <div className="w-full flex flex-row justify-start">
-            <label className="text-stronghold-platinum mb-2">
-              Of those <strong className="text-stronghold-red">{data.firstInterviews}</strong> interviews, how many advanced to a 2nd interview?
-            </label>
-          </div>
-          <input
-            type="number"
-            placeholder="Enter number of 2nd interviews"
-            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-            value={data.secondInterviews || ''}
-            onChange={(e) => {
-              const value = parseInt(e.target.value, 10);
-              if (value > 0) {
-                setData({ ...data, secondInterviews: value });
+        {formData.applications && (
+          <>
+            <div className="w-full flex flex-row justify-start">
+              <label className="text-stronghold-platinum mb-2">
+                How many led to a 1st interview?
+              </label>
+            </div>
+            <input
+              type="number"
+              placeholder="Enter number of 1st interviews"
+              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              value={formData.firstInterviews}
+              onChange={(e) =>
+                setFormData({ ...formData, firstInterviews: e.target.value })
               }
-            }}  
-          />
-        </>
-      }
+            />
+          </>
+        )}
 
-      {data.secondInterviews &&
-        <>
-          <div className="w-full flex flex-row justify-start">
-            <label className="text-stronghold-platinum mb-2">
-              Of those <strong className="text-stronghold-red">{data.secondInterviews}</strong> interviews, how many advanced to a 3rd (or more)?
-            </label>
-          </div>
-          <input
-            type="number"
-            placeholder="Enter number of 3rd+ round interviews"
-            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-            value={data.threePlusInterviews || ''}
-            onChange={(e) => {
-              const value = parseInt(e.target.value, 10);
-              if (value > 0) {
-                setData({ ...data, threePlusInterviews: value });
+        {formData.firstInterviews && (
+          <>
+            <div className="w-full flex flex-row justify-start">
+              <label className="text-stronghold-platinum mb-2">
+                Of those <strong className="text-stronghold-red">{formData.firstInterviews}</strong> interviews, how many advanced to a 2nd interview?
+              </label>
+            </div>
+            <input
+              type="number"
+              placeholder="Enter number of 2nd interviews"
+              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              value={formData.secondInterviews}
+              onChange={(e) =>
+                setFormData({ ...formData, secondInterviews: e.target.value })
               }
-            }}  
-          />
-        </>
-      }
+            />
+          </>
+        )}
 
-      {data.threePlusInterviews &&
-        <>
-          <div className="w-full flex flex-row justify-start">
-            <label className="text-stronghold-platinum mb-2">
-              How many offers did you receive from those interviews?
-            </label>
-          </div>
-          <input
-            type="number"
-            placeholder="Enter number of offers"
-            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-            value={data.offers || ''}
-            onChange={(e) => {
-              const value = parseInt(e.target.value, 10);
-              if (value > 0) {
-                setData({ ...data, offers: value });
+        {formData.secondInterviews && (
+          <>
+            <div className="w-full flex flex-row justify-start">
+              <label className="text-stronghold-platinum mb-2">
+                Of those <strong className="text-stronghold-red">{formData.secondInterviews}</strong> interviews, how many advanced to a 3rd (or more)?
+              </label>
+            </div>
+            <input
+              type="number"
+              placeholder="Enter number of 3rd+ round interviews"
+              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              value={formData.threePlusInterviews}
+              onChange={(e) =>
+                setFormData({ ...formData, threePlusInterviews: e.target.value })
               }
-            }}  
-          />
-        </>
-      }
-      
-      {data.threePlusInterviews &&
-        <>
-          <div className="w-full flex flex-row justify-start">
-            <label className="text-stronghold-platinum mb-2">
-              How many offers did you accept?
-            </label>
-          </div>
-          <input
-            type="number"
-            placeholder="Enter number of accepted offers"
-            className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-            value={data.accepted || ''}
-            onChange={(e) => {
-              const value = parseInt(e.target.value, 10);
-              if (value > 0) {
-                setData({ ...data, accepted: value });
+            />
+          </>
+        )}
+
+        {formData.threePlusInterviews && (
+          <>
+            <div className="w-full flex flex-row justify-start">
+              <label className="text-stronghold-platinum mb-2">
+                How many offers did you receive from those interviews?
+              </label>
+            </div>
+            <input
+              type="number"
+              placeholder="Enter number of offers"
+              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              value={formData.offers}
+              onChange={(e) =>
+                setFormData({ ...formData, offers: e.target.value })
               }
-            }}
-          />
-        </>
-      }
-        
-        {data.applications ? 
+            />
+          </>
+        )}
+
+        {formData.threePlusInterviews && (
+          <>
+            <div className="w-full flex flex-row justify-start">
+              <label className="text-stronghold-platinum mb-2">
+                How many offers did you accept?
+              </label>
+            </div>
+            <input
+              type="number"
+              placeholder="Enter number of accepted offers"
+              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              value={formData.accepted}
+              onChange={(e) =>
+                setFormData({ ...formData, accepted: e.target.value })
+              }
+            />
+          </>
+        )}
+
+        <button
+          type="submit"
+          className="jersey text-xl px-4 py-2 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
+          transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+        >
+          Generate Sankey Data
+        </button>
+      </form>
+
+      {data.applications ? (
         <label className="text-xl mb-2">
-         .txt preview
           <pre className="bg-gray-100 p-2 rounded text-left">
-            {/* Only show lines for non-zero values */}
             {data.firstInterviews ? `Applications [${data.firstInterviews}] 1st Interviews` : ''}
             {data.rejections ? `\nApplications [${data.rejections}] Rejected` : ''}
             {(data.applications - data.rejections - data.firstInterviews) > 0 ? `\nApplications [${data.applications - data.rejections - data.firstInterviews}] No Answer` : ''}
@@ -181,14 +195,15 @@ function SankeyGenerator() {
             {`\n`}
             {data.offers ? `\nOffers [${data.accepted}] Accepted` : ''}
             {(data.offers - data.accepted) > 0 ? `\nOffers [${data.offers - data.accepted}] Declined` : ''}
-          </pre> 
+          </pre>
         </label>
-        : ''}
+      ) : null}
+
+      {data.applications ? (
         <button
-          className="jersey text-xl px-4 py-2 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
+          className="jersey text-xl px-4 py-2 mt-4 bg-stronghold-white text-stronghold-red rounded hover:bg-stronghold-red-dark
           transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
-          onClick={(e) => {
-            e.preventDefault();
+          onClick={() => {
             const textToCopy = document.querySelector('pre').innerText;
             navigator.clipboard.writeText(textToCopy).then(() => {
               alert('Sankey data copied to clipboard!');
@@ -199,7 +214,8 @@ function SankeyGenerator() {
         >
           Copy Sankey Output to Clipboard
         </button>
-      </form>
+      ) : null}
+      
       <div className="mt-4 text-center">
         <div className="">Once you have copied the above text, you can use it as an input in the </div>
         <a
@@ -212,7 +228,7 @@ function SankeyGenerator() {
         </a>
       </div>
     </div>
-  )
+  );
 }
 
 export default SankeyGenerator
