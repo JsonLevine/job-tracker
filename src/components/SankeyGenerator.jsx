@@ -13,6 +13,16 @@ function SankeyGenerator() {
     accepted: '',
   });
 
+  const [tempFormData, setTempFormData] = useState({
+    applications: '',
+    rejections: '',
+    firstInterviews: '',
+    secondInterviews: '',
+    threePlusInterviews: '',
+    offers: '',
+    accepted: '',
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const parsedData = {
@@ -44,15 +54,33 @@ function SankeyGenerator() {
             <span className="text-stronghold-red/60"> (must be greater than 0)</span>
           </label>
         </div>
-        <input
-          type="number"
-          placeholder="Enter number of applications"
-          className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-          value={formData.applications}
-          onChange={(e) =>
-            setFormData({ ...formData, applications: e.target.value })
-          }
-        />
+        <div className="w-full flex flex-row justify-start items-center"> 
+          <input
+            type="number"
+            className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+            value={tempFormData.applications}
+            onChange={(e) =>
+              setTempFormData({ ...tempFormData, applications: e.target.value })
+            }
+          />
+          <button
+            type="button"
+            className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
+            transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+            onClick={() => {
+              if (tempFormData.applications && parseInt(tempFormData.applications, 10) > 0) {
+                setFormData({
+                  ...formData,
+                  applications: tempFormData.applications,
+                });
+              } else {
+                alert('Please enter a valid number of applications greater than 0.');
+              }
+            }}
+          >
+            {formData.applications ? 'Update' : 'Submit'}
+          </button>
+        </div>
 
         {formData.applications && (
           <>
@@ -64,7 +92,7 @@ function SankeyGenerator() {
             <input
               type="number"
               placeholder="Enter number of rejections"
-              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
               value={formData.rejections}
               onChange={(e) =>
                 setFormData({ ...formData, rejections: e.target.value })
@@ -83,7 +111,7 @@ function SankeyGenerator() {
             <input
               type="number"
               placeholder="Enter number of 1st interviews"
-              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
               value={formData.firstInterviews}
               onChange={(e) =>
                 setFormData({ ...formData, firstInterviews: e.target.value })
@@ -102,7 +130,7 @@ function SankeyGenerator() {
             <input
               type="number"
               placeholder="Enter number of 2nd interviews"
-              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
               value={formData.secondInterviews}
               onChange={(e) =>
                 setFormData({ ...formData, secondInterviews: e.target.value })
@@ -121,7 +149,7 @@ function SankeyGenerator() {
             <input
               type="number"
               placeholder="Enter number of 3rd+ round interviews"
-              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
               value={formData.threePlusInterviews}
               onChange={(e) =>
                 setFormData({ ...formData, threePlusInterviews: e.target.value })
@@ -140,7 +168,7 @@ function SankeyGenerator() {
             <input
               type="number"
               placeholder="Enter number of offers"
-              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
               value={formData.offers}
               onChange={(e) =>
                 setFormData({ ...formData, offers: e.target.value })
@@ -159,7 +187,7 @@ function SankeyGenerator() {
             <input
               type="number"
               placeholder="Enter number of accepted offers"
-              className="form-input rounded-full mb-4 w-full p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
               value={formData.accepted}
               onChange={(e) =>
                 setFormData({ ...formData, accepted: e.target.value })
