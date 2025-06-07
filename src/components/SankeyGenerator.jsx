@@ -127,13 +127,17 @@ function SankeyGenerator() {
                 onClick={() => {
                   if ((tempFormData.firstInterviews && parseInt(tempFormData.firstInterviews, 10) > 0)
                   && (tempFormData.rejections && parseInt(tempFormData.rejections, 10) > 0)) {
+                    if (parseInt(tempFormData.firstInterviews, 10) + parseInt(tempFormData.rejections, 10) > parseInt(tempFormData.applications, 10)) {
+                      alert('Error. The total of combined first interviews and rejections cannot exceed the number of applications.');
+                      return;
+                    }
                     setFormData({
                       ...formData,
                       rejections: tempFormData.rejections,
                       firstInterviews: tempFormData.firstInterviews,
                     });
                   } else {
-                    alert('Please enter a valid number of firstInterviews greater than 0.');
+                    alert('Please enter a valid number of first interviews greater than 0.');
                   }
                 }}
               >
@@ -166,12 +170,16 @@ function SankeyGenerator() {
                 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
                 onClick={() => {
                   if (tempFormData.secondInterviews && parseInt(tempFormData.secondInterviews, 10) > 0) {
+                    if (parseInt(tempFormData.secondInterviews, 10) > parseInt(tempFormData.firstInterviews, 10)) {
+                      alert('Error. The number of second interviews cannot exceed the number of first interviews.');
+                      return;
+                    }
                     setFormData({
                       ...formData,
                       secondInterviews: tempFormData.secondInterviews,
                     });
                   } else {
-                    alert('Please enter a valid number of secondInterviews greater than 0.');
+                    alert('Please enter a valid number of second interviews greater than 0.');
                   }
                 }}
               >
@@ -204,12 +212,16 @@ function SankeyGenerator() {
                 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
                 onClick={() => {
                   if (tempFormData.threePlusInterviews && parseInt(tempFormData.threePlusInterviews, 10) > 0) {
+                    if (parseInt(tempFormData.threePlusInterviews, 10) > parseInt(tempFormData.secondInterviews, 10)) {
+                      alert('Error. The number of third interviews cannot exceed the number of second interviews.');
+                      return;
+                    }
                     setFormData({
                       ...formData,
                       threePlusInterviews: tempFormData.threePlusInterviews,
                     });
                   } else {
-                    alert('Please enter a valid number of threePlusInterviews greater than 0.');
+                    alert('Please enter a valid number of third interviews greater than 0.');
                   }
                 }}
               >
@@ -236,6 +248,27 @@ function SankeyGenerator() {
                   setTempFormData({ ...tempFormData, offers: e.target.value })
                 }
               />
+              <button
+                type="button"
+                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
+                transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                onClick={() => {
+                  if (tempFormData.offers && parseInt(tempFormData.offers, 10) > 0) {
+                    if (parseInt(tempFormData.offers, 10) > parseInt(tempFormData.threePlusInterviews, 10)) {
+                      alert('Error. The number of offers cannot exceed the number of third interviews.');
+                      return;
+                    }
+                    setFormData({
+                      ...formData,
+                      offers: tempFormData.offers,
+                    });
+                  } else {
+                    alert('Please enter a valid number of offers greater than 0.');
+                  }
+                }}
+              >
+                {formData.accepted ? 'Update' : 'Submit'}
+              </button>
             </div>
           </>
         )}
@@ -244,7 +277,7 @@ function SankeyGenerator() {
           <>
             <div className="w-full flex flex-row justify-start">
               <label className="text-stronghold-platinum mb-2">
-                How many offers did you accept?
+                Of those <strong className="text-stronghold-red">{formData.offers}</strong> offers, how many did you accept?
               </label>
             </div>
             <div className="w-full flex flex-row justify-start items-center"> 
@@ -262,15 +295,17 @@ function SankeyGenerator() {
                 className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
                 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
                 onClick={() => {
-                  if ((tempFormData.accepted && parseInt(tempFormData.accepted, 10) > 0)
-                  && (tempFormData.offers && parseInt(tempFormData.offers, 10) > 0)) {
+                  if (tempFormData.accepted && parseInt(tempFormData.accepted, 10) > 0) {
+                    if (parseInt(tempFormData.accepted, 10) > parseInt(tempFormData.offers, 10)) {
+                      alert('Error. The number of accepted offers cannot exceed the number of offers.');
+                      return;
+                    }
                     setFormData({
                       ...formData,
-                      offers: tempFormData.offers,
                       accepted: tempFormData.accepted,
                     });
                   } else {
-                    alert('Please enter a valid number of offers/acceptances greater than 0.');
+                    alert('Please enter a valid number of accepted offers greater than 0.');
                   }
                 }}
               >
