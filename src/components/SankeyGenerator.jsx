@@ -89,15 +89,17 @@ function SankeyGenerator() {
                 Of those <strong className="text-stronghold-red">{formData.applications}</strong> applications, how many were rejected?
               </label>
             </div>
-            <input
-              type="number"
-              placeholder="Enter number of rejections"
-              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={tempFormData.rejections}
-              onChange={(e) =>
-                setTempFormData({ ...tempFormData, rejections: e.target.value })
-              }
-            />
+            <div className="w-full flex flex-row justify-start items-center"> 
+              <input
+                type="number"
+                placeholder="Enter number of rejections"
+                className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+                value={tempFormData.rejections}
+                onChange={(e) =>
+                  setTempFormData({ ...tempFormData, rejections: e.target.value })
+                }
+              />
+            </div>
           </>
         )}
 
@@ -108,15 +110,36 @@ function SankeyGenerator() {
                 How many led to a 1st interview?
               </label>
             </div>
-            <input
-              type="number"
-              placeholder="Enter number of 1st interviews"
-              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={tempFormData.firstInterviews}
-              onChange={(e) =>
-                setTempFormData({ ...tempFormData, firstInterviews: e.target.value })
-              }
-            />
+            <div className="w-full flex flex-row justify-start items-center"> 
+              <input
+                type="number"
+                placeholder="Enter number of 1st interviews"
+                className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+                value={tempFormData.firstInterviews}
+                onChange={(e) =>
+                  setTempFormData({ ...tempFormData, firstInterviews: e.target.value })
+                }
+              />
+              <button
+                type="button"
+                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
+                transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                onClick={() => {
+                  if ((tempFormData.firstInterviews && parseInt(tempFormData.firstInterviews, 10) > 0)
+                  && (tempFormData.rejections && parseInt(tempFormData.rejections, 10) > 0)) {
+                    setFormData({
+                      ...formData,
+                      rejections: tempFormData.rejections,
+                      firstInterviews: tempFormData.firstInterviews,
+                    });
+                  } else {
+                    alert('Please enter a valid number of firstInterviews greater than 0.');
+                  }
+                }}
+              >
+                {formData.firstInterviews ? 'Update' : 'Submit'}
+              </button>
+            </div>
           </>
         )}
 
@@ -127,15 +150,34 @@ function SankeyGenerator() {
                 Of those <strong className="text-stronghold-red">{formData.firstInterviews}</strong> interviews, how many advanced to a 2nd interview?
               </label>
             </div>
-            <input
-              type="number"
-              placeholder="Enter number of 2nd interviews"
-              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={tempFormData.secondInterviews}
-              onChange={(e) =>
-                setTempFormData({ ...tempFormData, secondInterviews: e.target.value })
-              }
-            />
+            <div className="w-full flex flex-row justify-start items-center"> 
+              <input
+                type="number"
+                placeholder="Enter number of 2nd interviews"
+                className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+                value={tempFormData.secondInterviews}
+                onChange={(e) =>
+                  setTempFormData({ ...tempFormData, secondInterviews: e.target.value })
+                }
+              />
+              <button
+                type="button"
+                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
+                transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                onClick={() => {
+                  if (tempFormData.secondInterviews && parseInt(tempFormData.secondInterviews, 10) > 0) {
+                    setFormData({
+                      ...formData,
+                      secondInterviews: tempFormData.secondInterviews,
+                    });
+                  } else {
+                    alert('Please enter a valid number of secondInterviews greater than 0.');
+                  }
+                }}
+              >
+                {formData.secondInterviews ? 'Update' : 'Submit'}
+              </button>
+            </div>
           </>
         )}
 
@@ -146,15 +188,34 @@ function SankeyGenerator() {
                 Of those <strong className="text-stronghold-red">{formData.secondInterviews}</strong> interviews, how many advanced to a 3rd (or more)?
               </label>
             </div>
-            <input
-              type="number"
-              placeholder="Enter number of 3rd+ round interviews"
-              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={tempFormData.threePlusInterviews}
-              onChange={(e) =>
-                setTempFormData({ ...tempFormData, threePlusInterviews: e.target.value })
-              }
-            />
+            <div className="w-full flex flex-row justify-start items-center"> 
+              <input
+                type="number"
+                placeholder="Enter number of 3rd+ round interviews"
+                className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+                value={tempFormData.threePlusInterviews}
+                onChange={(e) =>
+                  setTempFormData({ ...tempFormData, threePlusInterviews: e.target.value })
+                }
+              />
+              <button
+                type="button"
+                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
+                transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                onClick={() => {
+                  if (tempFormData.threePlusInterviews && parseInt(tempFormData.threePlusInterviews, 10) > 0) {
+                    setFormData({
+                      ...formData,
+                      threePlusInterviews: tempFormData.threePlusInterviews,
+                    });
+                  } else {
+                    alert('Please enter a valid number of threePlusInterviews greater than 0.');
+                  }
+                }}
+              >
+                {formData.threePlusInterviews ? 'Update' : 'Submit'}
+              </button>
+            </div>
           </>
         )}
 
@@ -165,15 +226,17 @@ function SankeyGenerator() {
                 How many offers did you receive from those interviews?
               </label>
             </div>
-            <input
-              type="number"
-              placeholder="Enter number of offers"
-              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={tempFormData.offers}
-              onChange={(e) =>
-                setTempFormData({ ...tempFormData, offers: e.target.value })
-              }
-            />
+            <div className="w-full flex flex-row justify-start items-center"> 
+              <input
+                type="number"
+                placeholder="Enter number of offers"
+                className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+                value={tempFormData.offers}
+                onChange={(e) =>
+                  setTempFormData({ ...tempFormData, offers: e.target.value })
+                }
+              />
+            </div>
           </>
         )}
 
@@ -184,21 +247,42 @@ function SankeyGenerator() {
                 How many offers did you accept?
               </label>
             </div>
-            <input
-              type="number"
-              placeholder="Enter number of accepted offers"
-              className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={tempFormData.accepted}
-              onChange={(e) =>
-                setTempFormData({ ...tempFormData, accepted: e.target.value })
-              }
-            />
+            <div className="w-full flex flex-row justify-start items-center"> 
+              <input
+                type="number"
+                placeholder="Enter number of accepted offers"
+                className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
+                value={tempFormData.accepted}
+                onChange={(e) =>
+                  setTempFormData({ ...tempFormData, accepted: e.target.value })
+                }
+              />
+              <button
+                type="button"
+                className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
+                transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+                onClick={() => {
+                  if ((tempFormData.accepted && parseInt(tempFormData.accepted, 10) > 0)
+                  && (tempFormData.offers && parseInt(tempFormData.offers, 10) > 0)) {
+                    setFormData({
+                      ...formData,
+                      offers: tempFormData.offers,
+                      accepted: tempFormData.accepted,
+                    });
+                  } else {
+                    alert('Please enter a valid number of offers/acceptances greater than 0.');
+                  }
+                }}
+              >
+                {formData.accepted ? 'Update' : 'Submit'}
+              </button>
+            </div>
           </>
         )}
 
         <button
           type="submit"
-          className="jersey text-xl px-4 py-2 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
+          className="jersey text-xl px-4 py-2 my-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
           transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
         >
           Generate Sankey Data
