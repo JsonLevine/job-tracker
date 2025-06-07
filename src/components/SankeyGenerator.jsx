@@ -93,9 +93,9 @@ function SankeyGenerator() {
               type="number"
               placeholder="Enter number of rejections"
               className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={formData.rejections}
+              value={tempFormData.rejections}
               onChange={(e) =>
-                setFormData({ ...formData, rejections: e.target.value })
+                setTempFormData({ ...tempFormData, rejections: e.target.value })
               }
             />
           </>
@@ -112,9 +112,9 @@ function SankeyGenerator() {
               type="number"
               placeholder="Enter number of 1st interviews"
               className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={formData.firstInterviews}
+              value={tempFormData.firstInterviews}
               onChange={(e) =>
-                setFormData({ ...formData, firstInterviews: e.target.value })
+                setTempFormData({ ...tempFormData, firstInterviews: e.target.value })
               }
             />
           </>
@@ -131,9 +131,9 @@ function SankeyGenerator() {
               type="number"
               placeholder="Enter number of 2nd interviews"
               className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={formData.secondInterviews}
+              value={tempFormData.secondInterviews}
               onChange={(e) =>
-                setFormData({ ...formData, secondInterviews: e.target.value })
+                setTempFormData({ ...tempFormData, secondInterviews: e.target.value })
               }
             />
           </>
@@ -150,9 +150,9 @@ function SankeyGenerator() {
               type="number"
               placeholder="Enter number of 3rd+ round interviews"
               className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={formData.threePlusInterviews}
+              value={tempFormData.threePlusInterviews}
               onChange={(e) =>
-                setFormData({ ...formData, threePlusInterviews: e.target.value })
+                setTempFormData({ ...tempFormData, threePlusInterviews: e.target.value })
               }
             />
           </>
@@ -169,9 +169,9 @@ function SankeyGenerator() {
               type="number"
               placeholder="Enter number of offers"
               className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={formData.offers}
+              value={tempFormData.offers}
               onChange={(e) =>
-                setFormData({ ...formData, offers: e.target.value })
+                setTempFormData({ ...tempFormData, offers: e.target.value })
               }
             />
           </>
@@ -188,9 +188,9 @@ function SankeyGenerator() {
               type="number"
               placeholder="Enter number of accepted offers"
               className="form-input rounded mb-4 w-1/2 p-2 border placeholder-stronghold-red/60 bg-stronghold-jet text-stronghold-red focus:border-stronghold-red focus:ring-stronghold-red"
-              value={formData.accepted}
+              value={tempFormData.accepted}
               onChange={(e) =>
-                setFormData({ ...formData, accepted: e.target.value })
+                setTempFormData({ ...tempFormData, accepted: e.target.value })
               }
             />
           </>
