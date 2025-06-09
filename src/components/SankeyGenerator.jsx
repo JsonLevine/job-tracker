@@ -315,12 +315,41 @@ function SankeyGenerator() {
           </>
         )}
 
-        <button
+        {formData.applications && <button
           type="submit"
-          className="jersey text-xl px-4 py-2 my-4 bg-stronghold-red text-white rounded hover:bg-stronghold-red-dark
+          className="jersey text-xl px-4 py-2 my-4 bg-stronghold-red text-stronghold-white rounded hover:bg-stronghold-red-dark
           transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
         >
           Generate Sankey Data
+        
+        </button>}
+        <button
+          type="button"
+          className="jersey text-xl px-4 py-2 my-4 bg-stronghold-white text-stronghold-red rounded hover:bg-stronghold-red-dark
+          transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
+          onClick={() => {
+            setFormData({
+              applications: '',
+              rejections: '',
+              firstInterviews: '',
+              secondInterviews: '',
+              threePlusInterviews: '',
+              offers: '',
+              accepted: '',
+            });
+            setTempFormData({
+              applications: '',
+              rejections: '',
+              firstInterviews: '',
+              secondInterviews: '',
+              threePlusInterviews: '',
+              offers: '',
+              accepted: '',
+            });
+            setData({});
+          }}
+        >
+          Reset Form
         </button>
       </form>
 
