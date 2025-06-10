@@ -321,7 +321,6 @@ function SankeyGenerator() {
           transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-110"
         >
           Generate Sankey Data
-        
         </button>}
         <button
           type="button"
