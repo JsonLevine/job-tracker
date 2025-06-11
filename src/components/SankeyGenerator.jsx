@@ -291,7 +291,7 @@ function SankeyGenerator() {
                 }
               />
               <button
-                type="button"
+                type="submit"
                 className="jersey text-xl px-4 py-2 ml-4 mb-4 bg-stronghold-red text-white rounded hover:bg-stronghold-white
                 transition duration-300 ease-in-out hover:text-stronghold-red"
                 onClick={() => {
