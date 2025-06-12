@@ -407,21 +407,3 @@ function SankeyGenerator() {
 }
 
 export default SankeyGenerator
-
-// Sample Job Search diagram:
-
-// Applications [10] 1st Interviews
-// Applications [9] Rejected
-// Applications [4] Ignored
-
-// 1st Interviews [8] 2nd Interviews
-// 1st Interviews [2] No Offer
-
-// 2nd Interviews [6] 3+ Interviews
-// 2nd Interviews [2] No Offer
-
-// 3+ Interviews [2] Offers
-// 3+ Interviews [4] No Offer
-
-// Offers [1] Accepted
-// Offers [1] Declined
