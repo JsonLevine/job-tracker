@@ -9,7 +9,7 @@ function App() {
     <div className="flex flex-col min-h-screen">
       <h1>Job Tracker Application</h1>
       <SankeyGenerator />
-      <Main />
+      {/* <Main /> */}
       <Footer />
     </div>
   )
