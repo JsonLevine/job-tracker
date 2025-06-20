@@ -392,7 +392,7 @@ function SankeyGenerator() {
       ) : null}
       
       <div className="mt-4 text-center">
-        <div className="">Once you have copied the above text, you can use it as an input in the </div>
+        <div>Once you have copied the above text, you can use it as an input in the </div>
         <a
           href="https://sankeymatic.com/build/"
           target="_blank"
