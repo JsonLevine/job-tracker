@@ -20,10 +20,6 @@ module.exports = {
         'stronghold-jet': '#343434',
         'stronghold-white': '#FFFFFF',
         'stronghold-green': '#4ADE80',
-        'chewy-blue': '#3B82F6',
-        'chewy-blue-accessible': '#99C0FF',
-        'optum-orange': '#F97316',
-        'optum-orange-accessible': '#F99550',
         'link-blue': '#8F99FF',
         'main-text': '#9CA3AF'
       },
